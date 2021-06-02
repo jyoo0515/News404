@@ -14,11 +14,11 @@ const getPetition = async () => {
   };
 
 const getPetitionByPage = async (page, pageNum) => {
-    await page.goto(`https://www1.president.go.kr/petitions/?c=0&only=1&page=&${pageNum}order=2`);
+    await page.goto(`https://www1.president.go.kr/petitions/?c=0&only=0&page=${pageNum}&order=2`);
     const petitionTitle = await page.$$eval('.petition_list li .bl_subject a', 
     (subjects) => subjects.map(el => el.innerText.substring(3)));
 
     return petitionTitle
 }
 
-export default getPetition;
+exports = getPetition;
