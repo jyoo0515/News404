@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const request = require('request');
+const axios = require('axios');
 const port = 3000;
 
 app.get('/', (req, res) => {
