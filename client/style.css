@@ -263,6 +263,10 @@ body {
     border-bottom-left-radius: 10px;
 }
 
+.wiki-content {
+    height: 100%;
+}
+
 .wiki-content h3 {
     padding-left: 10px;
     font-size: 1.5em;
@@ -275,6 +279,11 @@ body {
     position: relative;
     width: 100%;
     height: 40px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.wiki-search.pop {
+    transform: translateY(20px);
 }
 
 .wiki-content .wiki-search i {
@@ -284,6 +293,11 @@ body {
     right: 0;
     padding: 5px;
     color: var(--color-3);
+    transition: transform 0.2s ease-in-out;
+}
+
+.wiki-search i.pop {
+    transform: scale(1.1);
 }
 
 .wiki-content .wiki-search .wiki-input {
@@ -303,22 +317,42 @@ body {
 .wiki-content .wiki-list {
     list-style: none;
     margin-top: 25px;
+    display: block;
+    height: calc(100vh - 165px);
+    overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 
 .wiki-content .wiki-list .wiki-item {
+    position: relative;
     display: block;
     background-color: var(--color-2);
     border-radius: 20px;
-    width: 100%;
+    width: 95%;
     box-shadow: 0px 2px 2px 3px var(--color-1);
     font-family: inherit;
     font-size: 1em;
     padding: 20px 10px;
     margin-top: 15px;
-    line-height: 1.5em;
+    margin-left: 2%;
+    margin-right: 2%;
+    transition: all 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.wiki-item.swipe {
+    transform: translateX(70vw);
+    opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 .wiki-item b {
     display: block;
     margin-bottom: 1em;
+}
+
+.wiki-item i {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.3em;
 }
