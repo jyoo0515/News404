@@ -1,5 +1,7 @@
 const puppeteer = require('puppeteer');
 
+const selector = '.petition_list li .bl_subject a';
+
 const getPetition = async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -12,7 +14,7 @@ const getPetition = async () => {
       else request.continue();
     });
     
-    const petitions = await getPetitionByPage(page, 1);
+    const petitions = await getPetitionByPage(page);
     
     await browser.close();
 
@@ -21,10 +23,11 @@ const getPetition = async () => {
 
 const getPetitionByPage = async (page) => {
     await page.goto(`https://www1.president.go.kr/petitions/?c=0&only=0&page=1&order=2`);
-    const petitionTitle = await page.$$eval('.petition_list li .bl_subject a', 
+    await page.waitForSelector(selector);
+    const petitionTitle = await page.$$eval(selector, 
     (subjects) => subjects.map(el => el.innerText.substring(3)));
 
-    return petitionTitle
+    return petitionTitle;
 }
 
 module.exports = getPetition;
