@@ -3,7 +3,7 @@ const app = express();
 const axios = require('axios');
 const path = require('path');
 const PORT = process.env.PORT || 3000;
-const getPetition = require('./crawling.js');
+const getPetition = require('./petition.js');
 
 const GOOGLE_KEY = "AIzaSyDKVPrwsH3SWW76rfDggnt7cDOFX3z23aA";
 const N_CLIENT_ID = "NmJASo9kFFFf8r73tMeR";
