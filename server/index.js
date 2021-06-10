@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, "/../client")));
 
 app.get('/', (req, res) => {
     res.sendFile("index.html"); 
-})
+});
 
 app.post('/getLocalNews', (req, res) => {
     const latitude = req.body.latitude;
@@ -44,9 +44,27 @@ app.post('/getLocalNews', (req, res) => {
 });
 
 app.get('/getHotNews', (req, res) => {
-    getPetition().then(response => res.send(response));
-})
+    getPetition().then(async response => {
+        let newsList = [];
+        for (i = 0; i < 10; i++) {
+            const newsUrl = 'https://openapi.naver.com/v1/search/news.json?display=1&query=' + encodeURI(response[i]);
+            try {
+                await axios.get(newsUrl, {
+                    headers: {
+                        'X-Naver-Client-Id': N_CLIENT_ID,
+                        'X-Naver-Client-Secret': N_CLIENT_SECRET,
+                    }
+                }).then(resp => {
+                    newsList.push(resp.data);
+                })
+            } catch(error) {
+                console.log(error);
+            }
+        }
+        res.send(newsList);
+    });
+});
 
 app.listen(PORT, () => {
     console.log(`Listening at port ${PORT}`);
-})
+});
