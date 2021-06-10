@@ -1,10 +1,16 @@
 const puppeteer = require('puppeteer');
 
-const selector = '.petition_list li .bl_subject a';
-
 const getPetition = async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
+    
+    await page.setRequestInterception(true);
+    page.on('request', (request) => {
+      if (request.resourceType() === 'image') request.abort();
+      else if (request.resourceType() === 'stylesheet') request.abort();
+      else if (request.resourceType() === 'font') request.abort();
+      else request.continue();
+    });
     
     const petitions = [].concat(await getPetitionByPage(page, 1), await getPetitionByPage(page, 2));
     
