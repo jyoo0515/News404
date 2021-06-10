@@ -128,6 +128,7 @@ body {
     height: 100%;
     font-family: ELAND_Choice_M;
     display: none;
+    overflow: scroll;
 }
 
 .news-page.show {
@@ -146,4 +147,10 @@ body {
 }
 
 .news-item {
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+
+.news-item:last-child {
+    border-bottom: none;
 }
