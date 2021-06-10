@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test</title>
 </head>
+
 <body>
     <button onclick="getLocalNews()">Push Me for Local News</button>
     <button onclick="getHotNews()">Push Me for Hot News</button>
@@ -27,8 +29,8 @@
                         'longitude': position.coords.longitude
                     })
                 })
-                .then((response) => response.json())
-                .then((data) => console.log(data))
+                    .then((response) => response.json())
+                    .then((data) => console.log(data))
 
             });
         } else {
@@ -40,4 +42,5 @@
         fetch('/getHotNews').then(response => response.json()).then(data => console.log(data))
     }
 </script>
+
 </html>

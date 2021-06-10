@@ -39,6 +39,7 @@
 body {
     overflow: hidden;
     background-color: var(--background-color);
+    position: relative;
 }
 
 .main-container {
@@ -125,21 +126,16 @@ body {
 .news-page {
     background-color: var(--color-3);
     box-shadow: 5px 5px 5px var(--background-color);
-    height: 100%;
+    height: 0;
     font-family: ELAND_Choice_M;
     display: none;
     overflow: scroll;
+    transition: height 1s ease-out;
 }
 
 .news-page.show {
     display: block;
 }
-
-/* .news-page#vote {
-    position: relative;
-    top: -100%;
-    z-index: 3;
-} */
 
 .news-list {
     padding: 30px;
@@ -147,10 +143,72 @@ body {
 }
 
 .news-item {
-    padding: 10px;
+    padding: 15px;
     border-bottom: 1px solid black;
+}
+
+.news-item a {
+    color: black;
+    text-decoration: none;
+}
+
+.news-item:first-child {
+    padding-top: 0;
 }
 
 .news-item:last-child {
     border-bottom: none;
+    padding-bottom: 0;
+}
+
+.news-container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: -100%;
+    padding: 20px;
+    transition: left 1s ease-out;
+}
+
+.news-container.show {
+    left: 0;
+}
+
+.news-header {
+    position: relative;
+    background-color: var(--color-2);
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+
+.news-header .news-back {
+    position: absolute;
+    display: block;
+    font-size: 40px;
+    width: 50px;
+    color: white;
+    top: 5px;
+    left: 10px;
+}
+
+.news-header h3 {
+    font-family: Recipekorea;
+    display: block;
+    margin: auto;
+    font-size: 1.5em;
+    padding-top: 0.3em;
+    text-shadow: 1px 2px 2px rgb(41, 41, 41);
+}
+
+.news-content {
+    background-color: white;
+    width: 100%;
+    height: calc(100% - 50px);
+}
+
+#news-iframe {
+    width: 100%;
+    height: 100%;
 }
