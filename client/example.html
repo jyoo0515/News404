@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body>
+    <button onclick="getLocalNews()">Push Me</button>
+    <p id="demo"></p>
+</body>
+
+<script type="text/javascript">
+    function getLocalNews() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                fetch('/getLocalNews', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        'latitude': position.coords.latitude,
+                        'longitude': position.coords.longitude
+                    })
+                })
+                .then((response) => response.json())
+                .then((data) => console.log(data))
+
+            });
+        } else {
+            console.log("Geolocation not supported by this browser.");
+        }
+    }
+</script>
+</html>
