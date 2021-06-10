@@ -46,9 +46,8 @@ app.post('/getLocalNews', (req, res) => {
 app.get('/getHotNews', (req, res) => {
     getPetition().then(async response => {
         const promiseList = [];
-        console.time('aaaa');
-        for (i = 0; i < 10; i++) {
-            const newsUrl = 'https://openapi.naver.com/v1/search/news.json?display=1&query=' + encodeURI(response[i]);
+        for (i = 0; i < 5; i++) {
+            const newsUrl = 'https://openapi.naver.com/v1/search/news.json?display=2&query=' + encodeURI(response[i]);
             promiseList.push(axios.get(newsUrl, {
                 headers: {
                             'X-Naver-Client-Id': N_CLIENT_ID,
@@ -59,8 +58,7 @@ app.get('/getHotNews', (req, res) => {
             }
             Promise.all(promiseList)
             .then(list => {
-                res.send(list.map(news => news.data));
-                console.timeEnd('aaaa');
+                res.send(list.map(news => news.data.items).flat());
             })
             .catch(err => {
                 console.log(err.message);
