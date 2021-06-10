@@ -17,9 +17,9 @@ const getLocalNews = () => {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    local_list = data.items;
-                    console.log(data.items);
-                    renderLocalPage(data.items);
+                    local_list = data;
+                    console.log(data);
+                    renderLocalPage(data);
                 }).catch((err) => {
                     console.log(err);
                 });

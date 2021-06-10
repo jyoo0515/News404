@@ -1,13 +1,22 @@
-const vote_page = document.querySelector('#local');
+const vote_page = document.querySelector('#vote');
 let vote_list;
 
-const getHotNews = () => {
-    fetch('/getHotNews').then(response => response.json()).then(data => console.log(data))
+const getVoteNews = () => {
+    fetch('/getHotNews')
+        .then((response) => response.json())
+        .then((data) => {
+            local_list = data;
+            console.log(data);
+            renderVotePage(data);
+        }).catch((err) => {
+            console.log(err);
+        });
 }
-const renderLocalPage = (local_list) => {
+
+const renderVotePage = (vote_list) => {
     const news_list = document.createElement('ul');
     news_list.classList.add("news-list");
-    local_list.forEach((element) => {
+    vote_list.forEach((element) => {
         const news_item = document.createElement('li');
         news_item.classList.add('news-item');
         news_list.appendChild(news_item);
@@ -19,12 +28,12 @@ const renderLocalPage = (local_list) => {
         
         title_link.addEventListener('click', handlePopup);
     });
-    local_page.appendChild(news_list);
-    local_page.style.height = "100%";
+    vote_page.appendChild(news_list);
+    vote_page.style.height = "100%";
 }
 
-const local_init = () => {
-    window.addEventListener('load', getLocalNews);
+const vote_init = () => {
+    window.addEventListener('load', getVoteNews);
 }
 
-local_init();
+vote_init();

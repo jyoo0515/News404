@@ -32,7 +32,7 @@ app.post('/getLocalNews', (req, res) => {
             try {
                 axios.get(newsUrl, {headers})
                 .then(response => {
-                    res.send(response.data.itmes);
+                    res.send(response.data.items);
                 })
             } catch (error) {
                 console.log(error);

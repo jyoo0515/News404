@@ -12,40 +12,53 @@
 </head>
 
 <body>
-    <div class="main-container">
-        <div class="banner-container">
-            <img src="https://img.icons8.com/fluent/48/000000/newspaper-.png" />
-            <h1 id="banner">News <span>404</span></h1>
-        </div>
-        <div class="content-container">
-            <div class="tab-container">
-                <ul class="tab-list">
-                    <li class="tab-item checked" value="local">지역 뉴스</li>
-                    <li class="tab-item" value="vote">청원 뉴스</li>
-                </ul>
+    <div class="tmp-body">
+        <div class="main-container">
+            <div class="banner-container">
+                <img src="https://img.icons8.com/fluent/48/000000/newspaper-.png" />
+                <h1 id="banner">News <span>404</span></h1>
             </div>
-            <div class="list-container">
-                <div class="news-page show" id="local"></div>
-                <div class="news-page" id="vote"></div>
+            <div class="content-container">
+                <div class="tab-container">
+                    <ul class="tab-list">
+                        <li class="tab-item checked" value="local">지역 뉴스</li>
+                        <li class="tab-item" value="vote">청원 뉴스</li>
+                    </ul>
+                </div>
+                <div class="list-container">
+                    <div class="news-page show" id="local"></div>
+                    <div class="news-page" id="vote"></div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="news-container">
-        <div class="news-header">
-            <i class="fas fa-angle-left news-back"></i>
-            <h3>뉴스</h3>
+        <div class="news-container">
+            <div class="news-header">
+                <i class="fas fa-angle-left news-back"></i>
+                <h3>뉴스</h3>
+            </div>
+            <div class="news-content">
+                <iframe src="" frameborder="0" id="news-iframe"></iframe>
+            </div>
         </div>
-        <div class="news-content">
-            <iframe src="" frameborder="0" id="news-iframe"></iframe>
+        <div class="wiki-container">
+            <div class="wiki-toggle">
+                <i class="fas fa-search wiki-icon"></i>
+            </div>
+            <div class="wiki-content">
+                <h3>위키 검색</h3>
+                <div class="wiki-search">
+                    <input type="text" class="wiki-input">
+                </div>
+                <div class="wiki-list"></div>
+            </div>
         </div>
-    </div>
-    <div class="wiki-container">
-
     </div>
 </body>
 
 <script src="js/tab.js"></script>
 <script src="js/news.js"></script>
 <script src="js/local.js"></script>
+<script src="js/vote.js"></script>
+<script src="js/wiki.js"></script>
 
 </html>
