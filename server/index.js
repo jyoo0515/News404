@@ -45,26 +45,25 @@ app.post('/getLocalNews', (req, res) => {
 
 app.get('/getHotNews', (req, res) => {
     getPetition().then(async response => {
+        console.log(response);
         const promiseList = [];
-        console.time('aaaa');
-        for (i = 0; i < 10; i++) {
-            const newsUrl = 'https://openapi.naver.com/v1/search/news.json?display=1&query=' + encodeURI(response[i]);
+        for (i = 0; i < 5; i++) {
+            const newsUrl = 'https://openapi.naver.com/v1/search/news.json?display=2&query=' + encodeURI(response[i]);
             promiseList.push(axios.get(newsUrl, {
                 headers: {
                             'X-Naver-Client-Id': N_CLIENT_ID,
                             'X-Naver-Client-Secret': N_CLIENT_SECRET,
                         }
-                    })
-                )
-            }
-            Promise.all(promiseList)
-            .then(list => {
-                res.send(list.map(news => news.data));
-                console.timeEnd('aaaa');
-            })
-            .catch(err => {
-                console.log(err.message);
-            })
+                    }
+            ));
+        }
+        Promise.all(promiseList)
+        .then(list => {
+            res.send(list.map(news => news.data.items).flat());
+        })
+        .catch(err => {
+            console.log(err.message);
+        })
     });
 });
 
