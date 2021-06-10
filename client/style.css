@@ -1,0 +1,149 @@
+@font-face {
+    font-family: 'Recipekorea';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Recipekorea.woff')
+        format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ELAND_Choice_M';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/ELAND_Choice_M.woff')
+        format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HangeulNuri-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/HangeulNuri-Bold.woff')
+        format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --background-color: #656567;
+    --color-1: #797370;
+    --color-2: #8f8682;
+    --color-3: #e2dcd9;
+    --color-4: #b93d3d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    background-color: var(--background-color);
+}
+
+.main-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.banner-container {
+    background-color: var(--background-color);
+    color: white;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 20px;
+}
+
+.banner-container img {
+    margin-right: 10px;
+}
+
+.banner-container #banner {
+    font-family: Recipekorea;
+    display: block;
+    font-size: 2em;
+    padding-top: 0.3em;
+    text-shadow: 1px 2px 2px rgb(41, 41, 41);
+}
+
+.banner-container #banner span {
+    color: var(--color-4);
+    font-size: 1.1em;
+    text-shadow: 1px 2px 2px darkred;
+}
+
+.content-container {
+    height: calc(100vh - 200px);
+    padding: 20px;
+}
+
+.tab-container {
+    height: 50px;
+    font-family: HangeulNuri-Bold;
+}
+
+.tab-list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+    list-style-type: none;
+}
+
+.tab-item {
+    background-color: var(--color-1);
+    cursor: pointer;
+    width: 50%;
+    height: 45px;
+    text-align: center;
+    padding-top: 18px;
+    font-size: 1.3em;
+    color: #afa49e;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    transition: height 0.3s ease-out;
+}
+
+.tab-item.checked {
+    background-color: var(--color-2);
+    height: 50px;
+    color: #ffede4;
+}
+
+.list-container {
+    background-color: var(--color-2);
+    height: calc(100vh - 200px - 50px);
+    padding: 30px 30px;
+}
+
+.news-page {
+    background-color: var(--color-3);
+    box-shadow: 5px 5px 5px var(--background-color);
+    height: 100%;
+    font-family: ELAND_Choice_M;
+    display: none;
+}
+
+.news-page.show {
+    display: block;
+}
+
+/* .news-page#vote {
+    position: relative;
+    top: -100%;
+    z-index: 3;
+} */
+
+.news-list {
+    padding: 30px;
+    list-style: none;
+}
+
+.news-item {
+}
