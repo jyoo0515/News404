@@ -2,17 +2,18 @@ const express = require('express');
 const app = express();
 const axios = require('axios');
 const path = require('path');
-const port = 3000;
+const PORT = process.env.PORT || 3000;
+const getPetition = require('./crawling.js');
 
 const GOOGLE_KEY = "AIzaSyDKVPrwsH3SWW76rfDggnt7cDOFX3z23aA";
 const N_CLIENT_ID = "NmJASo9kFFFf8r73tMeR";
 const N_CLIENT_SECRET = "TDdmt7TXo8";
 
 app.use(express.json());
-app.use(express.static('client'));
+app.use(express.static(path.join(__dirname, "/../client")));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/../client/index.html'));
+    res.sendFile("index.html"); 
 })
 
 app.post('/getLocalNews', (req, res) => {
@@ -42,6 +43,10 @@ app.post('/getLocalNews', (req, res) => {
     })
 });
 
-app.listen(port, () => {
-    console.log(`Listening at http://localhost:${port}`);
+app.get('/getHotNews', (req, res) => {
+    getPetition().then(response => res.send(response));
+})
+
+app.listen(PORT, () => {
+    console.log(`Listening at port ${PORT}`);
 })
