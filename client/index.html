@@ -6,54 +6,67 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <link rel="stylesheet" href="style.css">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'none';">
 </head>
 
 <body>
-    <div class="main-container">
-        <div class="banner-container">
-            <img src="https://img.icons8.com/fluent/48/000000/newspaper-.png" />
-            <h1 id="banner">News <span>404</span></h1>
-        </div>
-        <div class="content-container">
-            <div class="tab-container">
-                <ul class="tab-list">
-                    <li class="tab-item checked" value="local">지역 뉴스</li>
-                    <li class="tab-item" value="vote">청원 뉴스</li>
-                </ul>
+    <div class="tmp-body">
+        <div class="main-container">
+            <div class="banner-container">
+                <img src="https://img.icons8.com/fluent/48/000000/newspaper-.png" />
+                <h1 id="banner">News <span>404</span></h1>
             </div>
-            <div class="list-container">
-                <div class="news-page show" id="local">
-                    <ul class="news-list">
-                        <li class="news-item">
-                            [속보] 고동현 디자인에 천부적인 재능 있는 것으로 밝혀져...
-                        </li>
-                        <li class="news-item">
-                            [충격] 고동현(20) 주다윤(21)씨와 열애 사실 인정
-                        </li>
-                        <li class="news-item">
-                            [단독] 윤영준 금일(6/1) 저녁 반포대교에서 운명의 그녀와 재회...
-                        </li>
+            <div class="content-container">
+                <div class="tab-container">
+                    <ul class="tab-list">
+                        <li class="tab-item checked" value="local">지역 뉴스</li>
+                        <li class="tab-item" value="vote">청원 뉴스</li>
                     </ul>
                 </div>
-                <div class="news-page" id="vote">
-                    <ul class="news-list">
-                        <li class="news-item">
-                            [속보] Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, velit.
-                        </li>
-                        <li class="news-item">
-                            [충격] Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, magnam.
-                        </li>
-                        <li class="news-item">
-                            [단독] Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt, ipsam.
-                        </li>
-                    </ul>
+                <div class="list-container">
+                    <div class="news-page show" id="local"></div>
+                    <div class="news-page" id="vote"></div>
                 </div>
+            </div>
+        </div>
+        <div class="news-container">
+            <div class="news-header">
+                <i class="fas fa-angle-left news-back"></i>
+                <h3>뉴스</h3>
+            </div>
+            <div class="news-content">
+                <iframe src="" frameborder="0" id="news-iframe"></iframe>
+            </div>
+        </div>
+        <div class="wiki-container">
+            <div class="wiki-toggle">
+                <i class="fas fa-search wiki-icon"></i>
+            </div>
+            <div class="wiki-content">
+                <h3>위키 검색</h3>
+                <div class="wiki-search">
+                    <input type="text" class="wiki-input">
+                    <i class="far fa-arrow-alt-circle-down"></i>
+                </div>
+                <ul class="wiki-list">
+                    <!-- <li class="wiki-item">
+                            <b>감자탕</b>
+                            <i class="fas fa-times"></i>
+                            <p>감자탕은 사실 감자라는 뼈의 부위를 지칭하는 말에서 나온 표현이다
+                            </p>
+                        </li> -->
+                </ul>
             </div>
         </div>
     </div>
 </body>
 
 <script src="js/tab.js"></script>
+<script src="js/news.js"></script>
+<script src="js/local.js"></script>
+<script src="js/vote.js"></script>
+<script src="js/wiki.js"></script>
 
 </html>
