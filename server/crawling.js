@@ -21,4 +21,4 @@ const getPetitionByPage = async (page, pageNum) => {
     return petitionTitle
 }
 
-exports = getPetition;
+module.exports = getPetition;
