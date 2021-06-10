@@ -8,6 +8,10 @@ const getPetition = require('./crawling.js');
 const GOOGLE_KEY = "AIzaSyDKVPrwsH3SWW76rfDggnt7cDOFX3z23aA";
 const N_CLIENT_ID = "NmJASo9kFFFf8r73tMeR";
 const N_CLIENT_SECRET = "TDdmt7TXo8";
+const headers = {
+    'X-Naver-Client-Id': N_CLIENT_ID,
+    'X-Naver-Client-Secret': N_CLIENT_SECRET
+};
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "/../client")));
@@ -26,13 +30,9 @@ app.post('/getLocalNews', (req, res) => {
             const area = JSON.stringify(response.data.results[0].address_components[2].long_name);
             const newsUrl = 'https://openapi.naver.com/v1/search/news.json?query=' + encodeURI(area);
             try {
-                axios.get(newsUrl, {
-                    headers: {
-                        'X-Naver-Client-Id': N_CLIENT_ID,
-                        'X-Naver-Client-Secret': N_CLIENT_SECRET
-                    }
-                }).then(response => {
-                    res.send(response.data);
+                axios.get(newsUrl, {headers})
+                .then(response => {
+                    res.send(response.data.itmes);
                 })
             } catch (error) {
                 console.log(error);
@@ -49,13 +49,7 @@ app.get('/getHotNews', (req, res) => {
         const promiseList = [];
         for (i = 0; i < 5; i++) {
             const newsUrl = 'https://openapi.naver.com/v1/search/news.json?display=2&query=' + encodeURI(response[i]);
-            promiseList.push(axios.get(newsUrl, {
-                headers: {
-                            'X-Naver-Client-Id': N_CLIENT_ID,
-                            'X-Naver-Client-Secret': N_CLIENT_SECRET,
-                        }
-                    }
-            ));
+            promiseList.push(axios.get(newsUrl, {headers}));
         }
         Promise.all(promiseList)
         .then(list => {
@@ -63,7 +57,7 @@ app.get('/getHotNews', (req, res) => {
         })
         .catch(err => {
             console.log(err.message);
-        })
+        });
     });
 });
 
