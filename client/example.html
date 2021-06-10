@@ -7,7 +7,8 @@
     <title>Test</title>
 </head>
 <body>
-    <button onclick="getLocalNews()">Push Me</button>
+    <button onclick="getLocalNews()">Push Me for Local News</button>
+    <button onclick="getHotNews()">Push Me for Hot News</button>
     <p id="demo"></p>
 </body>
 
@@ -33,6 +34,10 @@
         } else {
             console.log("Geolocation not supported by this browser.");
         }
+    }
+
+    function getHotNews() {
+        fetch('/getHotNews').then(response => response.json()).then(data => console.log(data))
     }
 </script>
 </html>
