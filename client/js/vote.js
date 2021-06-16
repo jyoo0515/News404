@@ -23,7 +23,7 @@ const renderVotePage = (vote_list) => {
         
         const title_link = document.createElement('a');
         title_link.innerHTML = element.title;
-        title_link.setAttribute('href', element.link);
+        title_link.setAttribute('href', element.originallink);
         news_item.appendChild(title_link);
         
         title_link.addEventListener('click', handlePopup);
